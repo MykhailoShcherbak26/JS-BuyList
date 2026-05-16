@@ -1,16 +1,137 @@
 <!DOCTYPE html>
-<html>
-<head lang="uk">
-    <meta charset="UTF-8">
-    <title>My Page</title>
-
-
-    <link rel="stylesheet" type="text/css" href="main.css" />
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BuyList — кошик покупок</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-	<span class="product-item">
-		Apple
-		<span class="amount">4</span>
-	</span>
+
+  <header class="visually-hidden">
+    <h1>BuyList — Сервіс керування покупками</h1>
+  </header>
+
+  <main class="layout">
+    <section class="column column-main" aria-labelledby="shopping-title">
+      <h2 id="shopping-title" class="section-title">Список покупок</h2>
+
+      <form class="add-item-form" action="#" method="post">
+        <div class="field">
+          <label class="field-label" for="item-name">Назва товару</label>
+          <div class="input-group">
+            <input id="item-name" class="item-input" type="text" name="item-name" placeholder="Назва товару">
+            <button type="button" class="control-button" data-tooltip="Додати новий товар" aria-label="Додати новий товар">
+              Додати
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <ul class="items-list">
+        <li class="item-row">
+          <span class="item-name-col">
+            <span class="bought-text">Помідори</span>
+          </span>
+          <span class="item-controls-col">
+            <span class="qty-badge" aria-label="Кількість: 2">2</span>
+          </span>
+          <span class="item-actions-col">
+            <button type="button" class="status-btn" data-tooltip="Повернути товар до списку" aria-label="Повернути товар до списку">
+              Не куплено
+            </button>
+          </span>
+        </li>
+
+        <li class="item-row">
+          <span class="item-name-col">
+            <span>Печиво</span>
+          </span>
+          <span class="item-controls-col">
+            <button type="button" class="qty-btn btn-minus" data-tooltip="Зменшити кількість" aria-label="Зменшити кількість">
+              -
+            </button>
+            <span class="qty-badge" aria-label="Кількість: 2">2</span>
+            <button type="button" class="qty-btn btn-plus" data-tooltip="Збільшити кількість" aria-label="Збільшити кількість">
+              +
+            </button>
+          </span>
+          <span class="item-actions-col">
+            <button type="button" class="status-btn" data-tooltip="Позначити товар як придбаний" aria-label="Позначити товар як придбаний">
+              Куплено
+            </button>
+            <button type="button" class="delete-btn" data-tooltip="Видалити товар" aria-label="Видалити товар">
+              ×
+            </button>
+          </span>
+        </li>
+
+        <li class="item-row">
+          <span class="item-name-col">
+            <label class="field" for="edit-item">
+              <span class="field-label visually-hidden">Назва товару</span>
+              <input id="edit-item" class="edit-item-input" type="text" name="edit-item" value="Сир">
+            </label>
+          </span>
+          <span class="item-controls-col">
+            <button type="button" class="qty-btn btn-minus" data-tooltip="Зменшити кількість" aria-label="Зменшити кількість">
+              -
+            </button>
+            <span class="qty-badge" aria-label="Кількість: 1">1</span>
+            <button type="button" class="qty-btn btn-plus" data-tooltip="Збільшити кількість" aria-label="Збільшити кількість">
+              +
+            </button>
+          </span>
+          <span class="item-actions-col">
+            <button type="button" class="status-btn" data-tooltip="Позначити товар як придбаний" aria-label="Позначити товар як придбаний">
+              Куплено
+            </button>
+            <button type="button" class="delete-btn" data-tooltip="Видалити товар" aria-label="Видалити товар">
+              ×
+            </button>
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <aside class="column column-side" aria-labelledby="summary-title">
+      <h2 id="summary-title" class="section-title">Підсумок</h2>
+
+      <section class="summary-section" aria-labelledby="left-title">
+        <h3 id="left-title" class="summary-title">Залишилося</h3>
+        <div class="summary-tags-container">
+          <span class="item-tag">
+            <span class="tag-name">Печиво</span>
+            <span class="tag-badge">2</span>
+          </span>
+          <span class="item-tag">
+            <span class="tag-name">Сир</span>
+            <span class="tag-badge">1</span>
+          </span>
+        </div>
+      </section>
+
+      <section class="summary-section" aria-labelledby="bought-title">
+        <h3 id="bought-title" class="summary-title">Куплено</h3>
+        <div class="summary-tags-container">
+          <span class="item-tag">
+            <span class="tag-name bought-text">Помідори</span>
+            <span class="tag-badge">2</span>
+          </span>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <div class="badge" tabindex="0" aria-label="Бейдж роботи">
+    <div class="badge-inner">
+      <span class="badge-front">BuyList</span>
+      <span class="badge-back">Щербак Михайло</span>
+    </div>
+  </div>
+
+  <footer class="visually-hidden">
+    <p>© 2026 BuyList App. Всі права захищені.</p>
+  </footer>
 </body>
 </html>
