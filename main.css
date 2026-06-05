@@ -44,22 +44,18 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-xl) var(--space-md) 5rem;
-  font-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
 }
 
 .column {
-  display: inline-block;
   width: 100%;
-  vertical-align: top;
   font-size: 1rem;
   background: var(--color-surface);
   padding: var(--space-lg);
   border-radius: var(--radius-sm);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.column+.column {
-  margin-top: var(--space-xl);
 }
 
 .section-title,
@@ -165,6 +161,37 @@ body {
   font-size: 1.1rem;
 }
 
+.item-name-col,
+.item-controls-col,
+.item-actions-col {
+  min-width: 0;
+}
+
+.item-name-button,
+.item-name-text {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.item-name-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: text;
+  white-space: normal;
+}
+
+.item-name-button:hover {
+  color: var(--color-primary);
+}
+
+.item-row--bought .item-name-button {
+  cursor: default;
+}
+
 .item-controls-col {
   width: 30%;
   display: flex;
@@ -241,6 +268,11 @@ body {
   text-decoration: line-through;
 }
 
+.summary-empty {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
 .summary-section+.summary-section {
   margin-top: var(--space-xl);
 }
@@ -250,15 +282,21 @@ body {
   flex-wrap: wrap;
   gap: var(--space-xs);
   margin-top: var(--space-md);
+  padding: 0;
+  list-style: none;
 }
 
 .item-tag {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.6rem;
   border-radius: var(--radius-sm);
   background: #ececec;
+}
+
+.item-tag--bought {
+  background: #f3f0f7;
 }
 
 .tag-name {
@@ -321,6 +359,18 @@ input:focus,
   outline-offset: 2px;
 }
 
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+button:disabled:hover::after,
+button:disabled:focus::after {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .badge {
   position: fixed;
   left: 0;
@@ -365,18 +415,16 @@ input:focus,
 
 @media (min-width: 650px) {
   .layout {
-    display: flex;
-    gap: var(--space-xl);
+    flex-direction: row;
+    align-items: flex-start;
   }
 
-  .column {
-    width: 70%;
+  .column-main {
+    flex: 2.2;
   }
 
-  .column.column+.column,
-  aside.column {
-    margin-top: 0;
-    width: 30%;
+  .column-side {
+    flex: 1;
   }
 }
 
@@ -422,20 +470,4 @@ input:focus,
   .badge-inner {
     top: 0 !important;
   }
-}.product-item {
-	background-color: gray;
-	display: inline-block;
-	height: 25px;
-	padding: 5px;
-	border-radius: 5px;
-}
-
-.amount {
-	background-color: yellow;
-	border-radius: 10px;
-	
-	display: inline-block;
-	height: 20px;
-	width: 20px;
-	text-align: center;
 }
